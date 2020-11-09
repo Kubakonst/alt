@@ -1,6 +1,6 @@
 package com.asc.loanservice.domain;
 
-import static org.junit.Assert.assertTrue;import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import com.asc.loanservice.contracts.LoanRequestDto;
 import java.math.BigDecimal;

@@ -22,11 +22,11 @@ public class DebtorValidator implements RulesValidator {
   @Override
   public boolean validate(LoanRequestDto loanRequest) {
     return !Objects.requireNonNull(
-            restTemplate
-                .getForEntity(
-                    BASE_DEBTOR_CHECK_URL + loanRequest.getCustomerTaxId(),
-                    CustomerCheckResult.class)
-                .getBody())
+        restTemplate
+            .getForEntity(
+                BASE_DEBTOR_CHECK_URL + loanRequest.getCustomerTaxId(),
+                CustomerCheckResult.class)
+            .getBody())
         .getIsRegisteredDebtor();
   }
 }

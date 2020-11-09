@@ -5,6 +5,7 @@ import com.asc.loanservice.contracts.LoanRequestDto;
 import com.asc.loanservice.contracts.LoanRequestEvaluationResult;
 import com.asc.loanservice.contracts.LoanRequestRegistrationResultDto;
 import com.asc.loanservice.repository.LoanRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +15,8 @@ public class LoanRequestService {
 
   private LoanRepository loanRepository;
 
-  public LoanRequestService(RulesValidationService rulesValidationService,
+  public LoanRequestService(
+      @Qualifier("mockRulesValidationService") RulesValidationService rulesValidationService,
       LoanRepository loanRepository) {
     this.rulesValidationService = rulesValidationService;
     this.loanRepository = loanRepository;
