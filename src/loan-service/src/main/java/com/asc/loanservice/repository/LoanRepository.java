@@ -1,11 +1,11 @@
 package com.asc.loanservice.repository;
 
 import com.asc.loanservice.contracts.LoanRequestDataDto;
-import java.util.Optional;
+import org.springframework.data.repository.Repository;
 
-public interface LoanRepository {
+public interface LoanRepository extends Repository<LoanRequestDataDto, String> {
 
-  void save(LoanRequestDataDto loanRequestDataDto);
+  LoanRequestDataDto save(LoanRequestDataDto loanRequestDataDto);
   LoanRequestDataDto findByLoanRequestNumber(String loanNumber);
 
 }

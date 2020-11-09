@@ -11,9 +11,10 @@ public class InMemoryLoanRepository implements LoanRepository {
 
   private HashMap<String, LoanRequestDataDto> map = new HashMap<>();
 
-  public void save(LoanRequestDataDto loanRequestDataDto) {
+  public LoanRequestDataDto save(LoanRequestDataDto loanRequestDataDto) {
     requireNonNull(loanRequestDataDto);
     map.put(loanRequestDataDto.getLoanRequestNumber(), loanRequestDataDto);
+    return loanRequestDataDto;
   }
 
   public LoanRequestDataDto findByLoanRequestNumber(String loanNumber) {
