@@ -5,9 +5,10 @@ import static java.util.Objects.requireNonNull;
 import com.asc.loanservice.contracts.LoanRequestDataDto;
 import com.asc.loanservice.exceptions.LoanNotFoundException;
 import java.util.HashMap;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-public class LoanRequestRepository {
+@Repository
+public class InMemoryLoanRepository implements LoanRepository{
 
   private HashMap<String, LoanRequestDataDto> map = new HashMap<>();
 

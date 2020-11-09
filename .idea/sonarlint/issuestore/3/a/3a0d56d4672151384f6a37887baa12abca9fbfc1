@@ -1,0 +1,21 @@
+
+P
+java:S1068"5Remove this unused "loanRequestNumber" private field.(ÖŠ°Ó8úäÂãÚ.
+K
+java:S1068"0Remove this unused "customerName" private field.(š£»Á8úäÂãÚ.
+N
+java:S1068"4Remove this unused "customerBirthday" private field.(ÖÂÈ8úäÂãÚ.
+Q
+java:S1068"1Remove this unused "customerTaxId" private field.(¯ã¢çùÿÿÿÿ8úäÂãÚ.
+Y
+java:S1068"9Remove this unused "customerMonthlyIncome" private field.(½Š¿°şÿÿÿÿ8úäÂãÚ.
+N
+java:S1068".Remove this unused "loanAmount" private field.(¯‡ßÍúÿÿÿÿ8úäÂãÚ.
+S
+java:S1068"8Remove this unused "numberOfInstallments" private field.(‹…Ÿæ8úäÂãÚ.
+X
+java:S1068"8Remove this unused "firstInstallmentDate" private field.(×¾Êïûÿÿÿÿ8úäÂãÚ.
+T
+java:S1068"4Remove this unused "evaluationResult" private field.(• ©¹ûÿÿÿÿ8úäÂãÚ.
+T
+java:S1068"4Remove this unused "registrationDate" private field.(Èü Íúÿÿÿÿ8úäÂãÚ.
