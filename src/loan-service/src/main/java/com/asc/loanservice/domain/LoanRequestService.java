@@ -16,7 +16,7 @@ public class LoanRequestService {
   private LoanRepository loanRepository;
 
   public LoanRequestService(
-      @Qualifier("mockRulesValidationService") RulesValidationService rulesValidationService,
+      @Qualifier("rulesValidationServiceImpl") RulesValidationService rulesValidationService,
       LoanRepository loanRepository) {
     this.rulesValidationService = rulesValidationService;
     this.loanRepository = loanRepository;

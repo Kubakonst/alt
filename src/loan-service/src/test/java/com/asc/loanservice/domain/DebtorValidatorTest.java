@@ -1,7 +1,6 @@
 package com.asc.loanservice.domain;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 import com.asc.loanservice.contracts.CustomerCheckResult;
@@ -9,7 +8,6 @@ import com.asc.loanservice.contracts.LoanRequestDto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -23,17 +21,13 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootTest
 class DebtorValidatorTest {
 
-  @MockBean
-  private RestTemplate restTemplate;
+  @MockBean private RestTemplate restTemplate;
 
-  @Autowired
-  private DebtorValidator debtorValidator;
+  @Autowired private DebtorValidator debtorValidator;
 
   @ParameterizedTest
   @MethodSource("debtorRegisterParams")
   void rejectDebtor(LoanRequestDto loanRequestDto) {
-    assertNotNull(debtorValidator);
-    assertNotNull(restTemplate);
 
     when(restTemplate.getForEntity(Mockito.anyString(), Mockito.eq(CustomerCheckResult.class)))
         .thenReturn(
