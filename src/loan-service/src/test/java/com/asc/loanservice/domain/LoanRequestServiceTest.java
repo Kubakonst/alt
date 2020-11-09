@@ -2,6 +2,7 @@ package com.asc.loanservice.domain;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import com.asc.loanservice.contracts.LoanRequestDto;
 import com.asc.loanservice.contracts.LoanRequestRegistrationResultDto;
@@ -9,18 +10,29 @@ import com.asc.loanservice.repository.InMemoryLoanRepository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class LoanRequestServiceTest {
 
-  private LoanRequestService loanRequestService =
-      new LoanRequestService(new MockRulesValidationService(), new InMemoryLoanRepository());
+  private LoanRequestService loanRequestService;
+
+  @Mock private RulesValidationService mockRulesValidationService;
 
   @ParameterizedTest
   @MethodSource("correctRegisterParams")
   void register(LoanRequestDto loanRequestDto) {
+
+    loanRequestService =
+        new LoanRequestService(mockRulesValidationService, new InMemoryLoanRepository());
+    when(mockRulesValidationService.validate(loanRequestDto)).thenReturn(true);
+
     assertDoesNotThrow(
         () -> {
           loanRequestService.register(loanRequestDto);
@@ -30,6 +42,11 @@ class LoanRequestServiceTest {
   @ParameterizedTest
   @MethodSource("correctRegisterParams")
   void getByNumber(LoanRequestDto loanRequestDto) {
+
+    loanRequestService =
+        new LoanRequestService(mockRulesValidationService, new InMemoryLoanRepository());
+    when(mockRulesValidationService.validate(loanRequestDto)).thenReturn(true);
+
     LoanRequestRegistrationResultDto result = loanRequestService.register(loanRequestDto);
     assertEquals(
         result.getLoanRequestNumber(),

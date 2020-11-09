@@ -3,7 +3,6 @@ package com.asc.loanservice.domain;
 import com.asc.loanservice.contracts.LoanRequestDto;
 import org.springframework.stereotype.Service;
 
-@Service
 class MockRulesValidationService implements RulesValidationService {
 
   @Override

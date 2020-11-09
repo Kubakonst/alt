@@ -1,5 +1,6 @@
 package com.asc.loanservice.domain;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.asc.loanservice.contracts.LoanRequestDto;
@@ -18,6 +19,12 @@ class InstallmentCostValidatorTest {
   @MethodSource("customerCantAffordLoanRegisterParams")
   void rejectBigInstallment(LoanRequestDto loanRequestDto) {
     assertTrue(installmentCostValidator.validate(loanRequestDto));
+  }
+
+  @ParameterizedTest
+  @MethodSource("correctRegisterParams")
+  void approveSmallInstallment(LoanRequestDto loanRequestDto) {
+    assertFalse(installmentCostValidator.validate(loanRequestDto));
   }
 
   private static Stream<Arguments> customerCantAffordLoanRegisterParams() {
@@ -46,6 +53,37 @@ class InstallmentCostValidatorTest {
                 LocalDate.of(1977, 5, 11),
                 "342fsdb4",
                 BigDecimal.valueOf(1300),
+                BigDecimal.valueOf(111000),
+                100,
+                LocalDate.of(2021, 1, 1))));
+  }
+
+  private static Stream<Arguments> correctRegisterParams() {
+    return Stream.of(
+        Arguments.of(
+            new LoanRequestDto(
+                "Kowalski",
+                LocalDate.of(1990, 11, 11),
+                "342fsdb4",
+                BigDecimal.valueOf(3000),
+                BigDecimal.valueOf(1000),
+                10,
+                LocalDate.of(2020, 12, 12))),
+        Arguments.of(
+            new LoanRequestDto(
+                "Kozłowski",
+                LocalDate.of(1980, 12, 12),
+                "dhsai3",
+                BigDecimal.valueOf(6000),
+                BigDecimal.valueOf(10000),
+                30,
+                LocalDate.of(2020, 9, 9))),
+        Arguments.of(
+            new LoanRequestDto(
+                "Nowak",
+                LocalDate.of(1977, 5, 11),
+                "342fsdb4",
+                BigDecimal.valueOf(13000),
                 BigDecimal.valueOf(111000),
                 100,
                 LocalDate.of(2021, 1, 1))));

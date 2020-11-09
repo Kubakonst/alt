@@ -7,8 +7,7 @@ import com.asc.loanservice.exceptions.LoanNotFoundException;
 import java.util.HashMap;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class InMemoryLoanRepository implements LoanRepository{
+public class InMemoryLoanRepository implements LoanRepository {
 
   private HashMap<String, LoanRequestDataDto> map = new HashMap<>();
 

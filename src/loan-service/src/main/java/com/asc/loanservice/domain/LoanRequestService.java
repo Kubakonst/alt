@@ -16,8 +16,7 @@ public class LoanRequestService {
   private LoanRepository loanRepository;
 
   public LoanRequestService(
-      @Qualifier("rulesValidationServiceImpl") RulesValidationService rulesValidationService,
-      LoanRepository loanRepository) {
+      RulesValidationService rulesValidationService, LoanRepository loanRepository) {
     this.rulesValidationService = rulesValidationService;
     this.loanRepository = loanRepository;
   }
